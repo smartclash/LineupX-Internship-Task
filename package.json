@@ -10,10 +10,14 @@
     "pug": "^2.0.4"
   },
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.6",
     "@types/mongoose": "^5.7.13",
+    "bulma": "^0.8.2",
     "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
     "laravel-mix": "^5.0.4",
+    "laravel-mix-purgecss": "^5.0.0-rc.2",
     "typescript": "^3.8.3"
   },
   "scripts": {
