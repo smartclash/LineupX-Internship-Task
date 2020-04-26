@@ -13,6 +13,10 @@ const RecruiterSchema = new mongoose.Schema({
             validator: (email: string) => isEmail(email)
         },
     },
+    password: {
+        type: String,
+        required: true,
+    },
     jobs: [{
         type: mongoose.Schema.Types.ObjectId,
     }],
