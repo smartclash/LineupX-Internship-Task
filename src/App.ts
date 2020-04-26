@@ -1,6 +1,7 @@
-import * as express from 'express';
+import * as path from 'path';
 import * as dotenv from 'dotenv';
 import routes from './App/Routes';
+import * as express from 'express';
 import * as session from 'express-session';
 
 if (process.env.NODE_ENV !== 'production') {
@@ -8,6 +9,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const app: express.Application = express();
+
+app.set('views', path.join(__dirname, '/../src/Resources/views'));
+app.set('view engine', 'pug');
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
