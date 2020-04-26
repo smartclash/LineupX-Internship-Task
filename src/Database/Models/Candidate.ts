@@ -27,7 +27,11 @@ const CandidateSchema = new mongoose.Schema({
     },
     skills: {
         type: String,
-        required: true
+        required: true,
+    },
+    assigned_job: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
     },
 });
 const Candidate = mongoose.model('Candidate', CandidateSchema);

@@ -13,6 +13,9 @@ const RecruiterSchema = new mongoose.Schema({
             validator: (email: string) => isEmail(email)
         },
     },
+    jobs: [{
+        type: mongoose.Schema.Types.ObjectId,
+    }],
 });
 const Recruiter = mongoose.model('Recruiter', RecruiterSchema);
 
