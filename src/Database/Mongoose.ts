@@ -1,4 +1,9 @@
 import * as mongoose from 'mongoose';
+import * as dotenv from 'dotenv';
+
+if (process.env.NODE_ENV !== 'production') {
+    dotenv.config();
+}
 
 const CONNECTION_URL: string = 'mongodb://'
     + process.env.DB_HOST + ':' 
