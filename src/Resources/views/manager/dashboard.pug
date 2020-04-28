@@ -8,8 +8,26 @@ block content
         .tabs
             ul
                 li.is-active
-                    a Un-Assigned Jobs
+                    a(href="") Un-Assigned Jobs
                 li 
-                    a Candidates Recieved
+                    a(href="/manager/candidates") Candidates Recieved
                 li 
-                    a Assigned Jobs 
+                    a(href="/manager/assigned") Assigned Jobs 
+
+        .columns.is-multiline.has-margin-4
+            each job in jobs
+                .column.is-3
+                    .card
+                        .card-content
+                            p.is-size-4= job.name
+                            p.is-size-6 #{job.company}, #{job.location}
+
+                            hr
+
+                            p Experience: #{job.experience} years
+                            p Salary: #{job.salary} Lakhs
+                            p Type: #{job.type}
+
+                        footer.card-footer
+                            .card-footer-item
+                                a.button.is-success.is-outlined.is-fullwidth(href="/manager/assign/" + encodeURIComponent(job._id)) Assign Recruiters

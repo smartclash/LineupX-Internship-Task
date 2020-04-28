@@ -24,6 +24,10 @@ route.get('/auth/login/recruiter', Auth.showRecruiterLogin)
 // Manager Routes
 
 route.get('/manager/dashboard', ManagerOnly, Manager.showDashboard);
+route.get('/manager/candidates', ManagerOnly, Manager.showCandidates);
+route.get('/manager/assigned', ManagerOnly, Manager.showAssignedJobs);
+route.get('/manager/assign/:job', ManagerOnly, Manager.showAssignRecruiter)
+    .post('/manager/assign/:job', ManagerOnly, Manager.processAssignRecruiter);
 
 // Recruiter Routes
 

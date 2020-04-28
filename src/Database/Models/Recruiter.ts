@@ -17,9 +17,10 @@ const RecruiterSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    jobs: [{
+    job: {
         type: mongoose.Schema.Types.ObjectId,
-    }],
+        ref: 'Job'
+    },
 });
 const Recruiter = mongoose.model('Recruiter', RecruiterSchema);
 

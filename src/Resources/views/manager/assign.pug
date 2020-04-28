@@ -1,0 +1,34 @@
+extends ../layouts/app
+
+block content
+    .has-margin-4
+        .notification
+            span.is-size-4 Welcome, #{name} - #{email}
+
+        .tabs
+            ul
+                li.is-active
+                    a(href="/manager/dashboard") Un-Assigned Jobs
+                li 
+                    a(href="/manager/candidates") Candidates Recieved
+                li
+                    a(href="/manager/assigned") Assigned Jobs 
+
+        .columns
+            .column.is-6.is-offset-3
+                .card.has-margin-4
+                    .card-content
+                        .title.has-text-centered.is-size-4
+                            span.has-text-grey-light Assign recruiter to #{job.name} job
+                        hr
+
+                        form#assign-form(action="/manager/assign/" + encodeURIComponent(job._id), method="post")
+                            .control
+                                .select.is-fullwidth
+                                    select(name="recruiter")
+                                        option(selected, value="false") Select Recruiter
+                                        each recruiter in recruiters
+                                            option(value=recruiter._id)= recruiter.name
+                    footer.card-footer
+                        .card-footer-item
+                            a.button.is-primary.is-fullwidth(onclick="document.getElementById('assign-form').submit()") Assign Recruiter

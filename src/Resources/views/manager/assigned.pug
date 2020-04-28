@@ -1,0 +1,33 @@
+extends ../layouts/app
+
+block content
+    .has-margin-4
+        .notification
+            span.is-size-4 Welcome, #{name} - #{email}
+
+        .tabs
+            ul
+                li
+                    a(href="/manager/dashboard") Un-Assigned Jobs
+                li
+                    a(href="/manager/candidates") Candidates Recieved
+                li.is-active
+                    a(href="/manager/assigned") Assigned Jobs 
+
+        .columns.is-multiline.has-margin-4
+            each job in jobs
+                .column.is-3
+                    .card
+                        .card-content
+                            p.is-size-4= job.name
+                            p.is-size-6 #{job.company}, #{job.location}
+
+                            hr
+
+                            p Experience: #{job.experience} years
+                            p Salary: #{job.salary} Lakhs
+                            p Type: #{job.type}
+
+                        footer.card-footer
+                            .card-footer-item
+                                a.button.is-success.is-outlined.is-fullwidth(href="#") Assigned #{job.assigned_to.name}

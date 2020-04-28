@@ -1,0 +1,15 @@
+extends ../layouts/app
+
+block content
+    .has-margin-4
+        .notification
+            span.is-size-4 Welcome, #{name} - #{email}
+
+        .tabs
+            ul
+                li
+                    a(href="/manager/dashboard") Un-Assigned Jobs
+                li.is-active 
+                    a(href="/manager/candidates") Candidates Recieved
+                li
+                    a(href="/manager/assigned") Assigned Jobs 

@@ -31,7 +31,6 @@ const CandidateSchema = new mongoose.Schema({
     },
     assigned_job: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
     },
 });
 const Candidate = mongoose.model('Candidate', CandidateSchema);

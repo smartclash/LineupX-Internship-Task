@@ -14,7 +14,7 @@ const JobSchema = new mongoose.Schema({
         required: true,
     },
     experience: {
-        type: String,
+        type: Number,
         required: true,
     },
     salary: {
@@ -24,7 +24,15 @@ const JobSchema = new mongoose.Schema({
     type: {
         type: String,
         required: true,
-    }
+    },
+    status: {
+        type: Boolean,
+        default: false,
+    },
+    assigned_to: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Recruiter'
+    },
 });
 const Job = mongoose.model('Job', JobSchema);
 
