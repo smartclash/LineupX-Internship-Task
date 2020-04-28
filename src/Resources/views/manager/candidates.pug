@@ -13,3 +13,18 @@ block content
                     a(href="/manager/candidates") Candidates Recieved
                 li
                     a(href="/manager/assigned") Assigned Jobs 
+
+        .columns.is-multiline.has-margin-4
+            each candidate in candidates
+                .column.is-3
+                    .card
+                        .card-content
+                            p.is-size-4 #{candidate.name} - #{candidate.assigned_job.company}
+                            p.is-size-5 #{candidate.assigned_job.company}, #{candidate.assigned_job.name}
+                            p.is-size-6 #{candidate.title}, #{candidate.qualification}
+
+                            hr
+
+                            p Experience: #{candidate.experience} years
+                            p Skills: #{candidate.skills}
+                            p Qualification: #{candidate.qualification}

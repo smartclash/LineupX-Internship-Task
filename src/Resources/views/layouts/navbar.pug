@@ -6,5 +6,11 @@ nav.navbar.is-light
             .navbar-end
                 .navbar-item
                     .buttons
-                        a.button.is-primary(href="/auth/login/decide")
-                            strong Login
+                        if name
+                            a.button.is-primary(href="/auth/login/decide")
+                                strong Dashboard
+                            a.button.is-danger.is-outlined(href="/auth/logout")
+                                strong Logout
+                        else
+                            a.button.is-primary(href="/auth/login/decide")
+                                strong Login

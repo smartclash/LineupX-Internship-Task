@@ -1,0 +1,36 @@
+extends ../layouts/app
+
+block content
+    .has-margin-4
+        .notification
+            span.is-size-4 Welcome, #{name} - #{email}
+
+        .tabs
+            ul
+                li.is-active
+                    a(href="/recruiter/dashboard") Assigned Jobs
+                li 
+                    a(href="/recruiter/accepted") Accepted Jobs
+                li 
+                    a(href="/recruiter/rejected") Rejected Jobs
+                li
+                    a(href="/recruiter/completed") Completed Jobs
+
+        .columns
+            .column.is-6.is-offset-3
+                .card.has-margin-4
+                    .card-content
+                        .title.has-text-centered.is-size-4
+                            span.has-text-grey-light Assign recruiter to #{job.name} job
+                        hr
+
+                        form#assign-form(action="/recruiter/assign/" + encodeURIComponent(job._id), method="post")
+                            .control
+                                .select.is-fullwidth
+                                    select(name="candidate")
+                                        option(selected, value="false") Select candidate
+                                        each candidate in candidates
+                                            option(value=candidate._id)= candidate.name
+                    footer.card-footer
+                        .card-footer-item
+                            a.button.is-primary.is-fullwidth(onclick="document.getElementById('assign-form').submit()") Assign Candidate

@@ -37,6 +37,7 @@ export const processManagerLogin = async (req: Request, res: Response, args: any
     }
 
     req.session.user = {
+        id: user._id,
         name: user.name,
         email: user.email,
         type: 'manager',
@@ -64,10 +65,16 @@ export const processRecruiterLogin = async (req: Request, res: Response, args: a
     }
 
     req.session.user = {
+        id: user._id,
         name: user.name,
         email: user.email,
         type: 'recruiter',
     };
 
     return res.redirect('/recruiter/dashboard');
+};
+
+export const processLogout = (req: Request, res: Response, args: any) => {
+    req.session.destroy();
+    res.redirect('/auth/login/decide');
 };

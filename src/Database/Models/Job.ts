@@ -31,7 +31,19 @@ const JobSchema = new mongoose.Schema({
     },
     assigned_to: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Recruiter'
+        ref: 'Recruiter',
+    },
+    accepted: {
+        type: String,
+        default: 'unknown',
+    },
+    completed: {
+        type: Boolean,
+        default: false,
+    },
+    candidate: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Candidate',
     },
 });
 const Job = mongoose.model('Job', JobSchema);

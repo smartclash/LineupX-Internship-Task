@@ -2,14 +2,17 @@ import {Request, Response} from 'express';
 import Job from '../../../Database/Models/Job';
 import Recruiter from '../../../Database/Models/Recruiter';
 import mongoose from '../../../Database/Mongoose';
+import Candidate from '../../../Database/Models/Candidate';
 
 export const showDashboard = async (req: Request, res: Response, args: any) => {
     const jobs = await Job.find({ status: false });
     return res.render('manager/dashboard', {...req.session.user, jobs});
 };
 
-export const showCandidates = (req: Request, res: Response, args: any) => {
-    return res.render('manager/candidates', req.session.user);
+export const showCandidates = async (req: Request, res: Response, args: any) => {
+    const candidates = await Candidate.find({ employed: true }).populate('assigned_job');
+
+    return res.render('manager/candidates', {...req.session.user, candidates});
 };
 
 export const showAssignedJobs = async (req: Request, res: Response, args: any) => {
@@ -27,7 +30,7 @@ export const showAssignRecruiter = async (req: Request, res: Response, args: any
         return res.redirect('/manager/dashboard');
     }
 
-    return res.render('manager/assign', {job, recruiters});
+    return res.render('manager/assign', {...req.session.user, job, recruiters});
 };
 
 export const processAssignRecruiter = async (req: Request, res: Response, args: any) => {

@@ -1,0 +1,35 @@
+extends ../layouts/app
+
+block content
+    .has-margin-4
+        .notification
+            span.is-size-4 Welcome, #{name} - #{email}
+
+        .tabs
+            ul
+                li
+                    a(href="/recruiter/dashboard") Assigned Jobs
+                li 
+                    a(href="/recruiter/accepted") Accepted Jobs
+                li.is-active 
+                    a(href="/recruiter/rejected") Rejected Jobs
+                li
+                    a(href="/recruiter/completed") Completed Jobs
+
+        .columns.is-multiline.has-margin-4
+            each job in jobs
+                .column.is-3
+                    .card
+                        .card-content
+                            p.is-size-4= job.name
+                            p.is-size-6 #{job.company}, #{job.location}
+
+                            hr
+
+                            p Experience: #{job.experience} years
+                            p Salary: #{job.salary} Lakhs
+                            p Type: #{job.type}
+
+                        footer.card-footer
+                            .card-footer-item
+                                button.button.is-danger.is-fullwidth Rejected
