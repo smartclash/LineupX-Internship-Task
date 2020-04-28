@@ -1,0 +1,16 @@
+extends ../layouts/app.pug
+
+block content
+    .columns
+        .column.is-6.is-offset-3
+            .card.has-margin-4
+                .card-content
+                    .title.has-text-centered
+                        span.has-text-grey-light Choose who you are
+                    hr
+                    .content
+                        .columns
+                            .column.is-6
+                                a.button.is-primary.is-fullwidth(href="/auth/login/manager") Account Manager
+                            .column.is-6
+                                a.button.is-primary.is-fullwidth(href="/auth/login/recruiter") Recruiter

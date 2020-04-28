@@ -1,0 +1,29 @@
+extends ../layouts/app.pug
+
+block content
+    .columns
+        .column.is-6.is-offset-3
+            if error
+                .card.has-margin-4.has-background-danger.has-text-white
+                    .card-content
+                        span.is-size-4= error
+            .card.has-margin-4
+                .card-content
+                    .title.has-text-centered
+                        span.has-text-grey-light Recruiter Login
+                    hr
+                    form#login-form(action="/auth/login/recruiter", method="post")
+                        .field
+                            label.label(for="email") Email 
+                                span.has-text-danger *
+                            .control
+                                input.input#email(type="email", name="email", required)
+                        .field
+                            label.label(for="password") Password 
+                                span.has-text-danger *
+                            .control
+                                input.input#password(type="password", name="password", required)
+                footer.card-footer
+                    .card-footer-item
+                        a.button.is-primary.is-fullwidth(onclick="document.getElementById('login-form').submit()")
+                            strong Login
